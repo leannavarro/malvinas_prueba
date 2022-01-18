@@ -27,7 +27,7 @@ library(ggthemes)
 loadfonts(device = "win", quiet = TRUE)
 windowsFonts("Helvetica" = windowsFont("HelveticaNeueLT Std Cn"))
 
-historico_locales <- read_xlsx("historico.xlsx")
+historico_locales <- read.csv2("https://raw.githubusercontent.com/leannavarro/malvinas_prueba/main/shiny/hist.csv")
 
 fechas_correctas <- c("Julio 2018", "Octubre 2018", "Diciembre 2018", "Marzo 2019", "Julio 2019", "Marzo 2020", "Marzo 2021", "Junio 2021", "Septiembre 2021", "Diciembre 2021")
 imagen_correcta <- c("Imagen positiva", "Imagen negativa", "NS/NC", "No lo conoce")
