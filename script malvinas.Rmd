@@ -1,0 +1,56 @@
+---
+title: "Untitled"
+author: "Articulat Consulting"
+date: "18/1/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+#Locales históricos
+```{r}
+library(extrafont)
+library(tidyverse)
+library(readxl)
+library(RColorBrewer)
+library(wesanderson)
+library(scales)
+library(Cairo)
+library(lubridate)
+options(scipen=999)
+library(ggrepel)
+library(jcolors)
+library(tidytext)
+rm(list=ls())
+library(ggthemes)
+loadfonts(device = "win", quiet = TRUE)
+windowsFonts("Helvetica" = windowsFont("HelveticaNeueLT Std Cn"))
+
+historico_locales <- read_xlsx("historico malvinas locales.xlsx")
+
+
+fechas_correctas <- c("Julio 2018", "Octubre 2018", "Diciembre 2018", "Marzo 2019", "Julio 2019", "Marzo 2020", "Marzo 2021", "Junio 2021", "Septiembre 2021", "Diciembre 2021")
+imagen_correcta <- c("Imagen positiva", "Imagen negativa", "NS/NC", "No lo conoce")
+
+
+color_imagenes <- c("Imagen positiva" = "#28B463", "Imagen negativa" = "#E74C3C", "NS/NC" = "#837F7F", "No lo conoce" = "#F7DC6F")
+
+
+p <- ggplot(historico_locales, aes(x = factor (fecha, level = fechas_correctas), y = frecuencia, 
+                               group = imagenes_locales))+
+  geom_line(aes(colour = imagenes_locales))+
+  geom_point()+
+  scale_y_continuous(labels = scales::percent)+
+ # theme_classic()+
+ #    theme(legend.position = "bottom",
+ #          legend.title = element_blank(),
+ #          plot.title = element_text(hjust = 0.5),
+ #          axis.text.y=element_blank(), axis.ticks=element_blank(),
+ #          axis.line=element_blank(),
+ #          axis.text.x = element_text(angle = 90, vjust=0.5, size = 6),
+ #          axis.title=element_blank(),
+ #          strip.text.y = element_text(angle = 0))+
+  scale_colour_manual(values = c("#28B463", "#E74C3C", "#837F7F", "#F7DC6F"))+
+  facet_grid(vars(factor(politicos_locales, level = orden_politicos)))
+```
