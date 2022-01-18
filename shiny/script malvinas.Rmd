@@ -27,7 +27,8 @@ library(ggthemes)
 loadfonts(device = "win", quiet = TRUE)
 windowsFonts("Helvetica" = windowsFont("HelveticaNeueLT Std Cn"))
 
-historico_locales <- read_xlsx("historico malvinas locales.xlsx")
+historico_locales <- read_xlsx("historico.xlsx")
+
 
 
 fechas_correctas <- c("Julio 2018", "Octubre 2018", "Diciembre 2018", "Marzo 2019", "Julio 2019", "Marzo 2020", "Marzo 2021", "Junio 2021", "Septiembre 2021", "Diciembre 2021")
