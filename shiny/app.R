@@ -13,7 +13,7 @@ library(DT)
 library(scales)
 library(png)
 
-options(scipen = 999)
+options(scipen = 99)
 
 
 ############################## UI #######################################
